@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>مكتبة الدروس - Al-Azhar</title>
+<meta name="description" content="دروس الوحدات المطلوبة للصف الأول الثانوي الأزهري">
+<style>
+:root{--bg:#faf8f2;--surface:#ffffff;--surface-warm:#ede8da;--ink:#1a1a1a;--muted:#4a463c;--border:#d8d0bd;--primary:#3a3122;--primary-hover:#2a2318;--gold:#8a6d1a;--gold-bg:#d4a017;--gold-bg-hover:#b88a0f;--focus:#005fcc;--radius:16px;--gap:16px;--gap-lg:24px;--space-section:24px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);margin:0;line-height:1.7;font-size:16px}
+a{color:var(--primary)} a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:8px}
+.skip{position:absolute;inset-inline-start:12px;top:-100px;background:var(--primary);color:#fff;padding:12px 16px;border-radius:12px;z-index:1000}
+.skip:focus{top:12px}
+.wrap{max-width:960px;margin:0 auto;padding-inline:20px}
+.hero{background:var(--surface-warm);border-bottom:3px solid var(--gold);padding:32px 0 28px}
+.hero-inner{display:flex;flex-direction:column;gap:16px}
+.hero h1{font-size:32px;line-height:1.4;margin:0;font-weight:700}
+.hero h1 span{display:block;font-size:19px;font-weight:700;margin-top:8px;color:var(--muted)}
+.hero .meta{font-size:16px;color:var(--muted);line-height:1.7}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 20px;border-radius:12px;border:2px solid transparent;font-family:Arial,sans-serif;font-size:16px;font-weight:700;cursor:pointer;text-decoration:none;line-height:1.4}
+.btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{background:var(--primary-hover)}
+.btn-gold{background:var(--gold-bg);color:#1a1a1a;border-color:#8a6d1a}.btn-gold:hover{background:var(--gold-bg-hover)}
+.btn-outline{background:#fff;color:var(--ink);border-color:var(--border)}
+.btn-small{min-height:44px;padding:10px 14px;font-size:15px}
+.btn-danger{background:#fff;color:#8a1a1a;border-color:#d8a5a5}
+.btn-success{background:#2f6b2f;color:#fff}
+.icon{width:24px;height:24px;flex:0 0 auto;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.icon-lg{width:36px;height:36px}
+.icon-sm{width:20px;height:20px}
+.tabs-bar{position:sticky;top:0;z-index:20;background:var(--bg);padding:16px 0;border-bottom:1px solid var(--border)}
+.tabs{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.tab{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 16px;border-radius:999px;border:2px solid var(--border);background:#fff;cursor:pointer;font-family:Arial,sans-serif;font-size:16px;font-weight:700}
+.tab[aria-current="true"]{background:var(--primary);color:#fff;border-color:var(--primary)}
+.unit-actions{display:inline-flex;gap:6px}
+.mini-btn{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;border:2px solid var(--border);background:#fff;border-radius:10px;cursor:pointer;font-size:16px}
+.section{margin:var(--space-section) 0;display:flex;flex-direction:column;gap:var(--gap)}
+.card{background:var(--surface);border:2px solid var(--border);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;gap:16px}
+.card-warm{background:#fef9e6;border-color:#d4a017}
+.card-dark{background:var(--primary);color:#fff;border-color:var(--primary);padding:28px;gap:20px;align-items:stretch;text-align:center}
+.card-dark .btn{width:100%}
+label{display:block;margin-bottom:8px;font-weight:700}
+input,select{width:100%;min-height:48px;padding:12px 14px;border:2px solid var(--border);border-radius:12px;font-size:16px;font-family:Arial,sans-serif;background:#fff;color:var(--ink)}
+.filters{display:flex;flex-wrap:wrap;gap:10px}
+.filter{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 16px;border-radius:999px;border:2px solid var(--border);background:#fff;cursor:pointer;font-family:Arial,sans-serif;font-size:15px;font-weight:700}
+.filter[aria-pressed="true"]{background:var(--primary);color:#fff;border-color:var(--primary)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:640px){.grid{grid-template-columns:1fr}.hero h1{font-size:26px}.wrap{padding-inline:16px}.card{padding:20px}}
+.unit-card{background:#fff;border:2px solid var(--border);border-radius:var(--radius);padding:20px;display:flex;flex-direction:column;gap:10px;cursor:pointer;text-align:start;width:100%;font-family:Arial,sans-serif}
+.unit-card:hover{border-color:var(--gold)}
+.unit-card h3{margin:0;font-size:18px}
+.lesson{background:#fff;border:2px solid var(--border);border-radius:var(--radius);padding:20px;display:flex;flex-direction:column;gap:12px}
+.lesson-top{display:flex;flex-direction:column;gap:8px}
+.lesson h3{margin:0;font-size:18px;line-height:1.5}
+.meta{font-size:15px;color:var(--muted);line-height:1.7}
+.badge{display:inline-flex;align-items:center;gap:6px;background:#f1ede1;padding:6px 12px;border-radius:999px;font-size:14px;font-weight:700;color:var(--ink)}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.small{font-size:14px;color:var(--muted);line-height:1.7}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+</style></head>
+<body>
+<a class="skip" href="#main">تخطي إلى المحتوى</a>
+<header class="hero"><div class="wrap hero-inner">
+<div><h1><span id="headerTitle">مكتبة الدروس</span> <span id="headerSubtitle">دروس الوحدات المطلوبة : الفصل الثاني</span></h1><p class="meta" id="headerDesc">الصف الأول الثانوي الأزهري - Year 2026-2027 | أ. محمد بركات</p></div>
+<nav class="hero-actions" aria-label="روابط سريعة">
+<button class="btn btn-primary" onclick="showView('student')">المواد</button>
+<a id="homeworkLink" class="btn btn-outline" href="https://alazhari.netlify.app/" style="text-decoration:none">الواجبات</a>
+<button id="teacherBtn" class="btn btn-outline" onclick="askTeacher()" style="display:none">المعلم</button>
+<button class="btn btn-outline" onclick="toggleHeader()">إخفاء العناوين</button>
+</nav></div></header>
+<main id="main" class="wrap">
+<div class="tabs-bar"><div id="tabsBar" class="tabs" role="tablist" aria-label="الوحدات"></div></div>
+
+<div id="studentView">
+<section class="section" aria-labelledby="welcome-title">
+<div class="card card-warm"><h2 id="welcome-title" style="margin:0;font-size:20px">اختر الوحدة المطلوبة و نوع الدرس حسب الموجود</h2><div id="unitCards" class="grid"></div></div>
+</section>
+<section class="section" aria-labelledby="lessons-title">
+<div class="card"><h2 id="lessons-title" style="margin:0">دروس — <span id="boardTitle"></span></h2>
+<div><label for="searchBox">بحث عن درس</label><input id="searchBox" type="search" placeholder="ابحث عن درس..." oninput="renderAll()"></div>
+<div><p id="filterLabel" style="margin:0 0 10px;font-weight:700">نوع الدرس</p><div id="typeFilters" class="filters" role="group" aria-labelledby="filterLabel"></div></div>
+<p id="typeSummary" class="small" aria-live="polite"></p>
+<div id="studentBoard" class="grid"></div>
+</div>
+</section>
+<section class="section" aria-labelledby="homework-title">
+<div class="card card-dark"><h2 id="homework-title" style="margin:0;font-size:22px">عنوان لوحة الواجبات</h2><a class="btn btn-gold" href="https://alazhari.netlify.app/">اذهب إلى الواجبات</a></div>
+</section>
+</div>
+
+<div id="teacherView" style="display:none">
+<section class="section"><div class="card"><h2 style="margin:0">لوحة المعلم — الدروس</h2>
+<div style="background:#fef9e6;border:2px solid #d4a017;padding:16px;border-radius:12px;display:flex;flex-direction:column;gap:12px"><h3 style="margin:0">تغيير كلمة مرور المعلم</h3><p class="small" style="margin:0">على هذا الجهاز فقط.</p><div style="display:flex;gap:10px;flex-wrap:wrap"><div style="flex:1;min-width:200px"><label for="newTeacherPw">كلمة جديدة</label><input id="newTeacherPw" type="password" placeholder="كلمة جديدة"></div><div style="display:flex;gap:10px;align-items:flex-end"><button class="btn btn-success btn-small" onclick="changeTeacherPassword()">تغيير</button><button class="btn btn-outline btn-small" onclick="resetTeacherPassword()">إعادة تعيين</button></div></div><p id="pwMsg" class="small" aria-live="polite"></p></div><div style="background:#fff;border:2px solid var(--border);padding:16px;border-radius:12px;display:flex;flex-direction:column;gap:12px;margin-top:16px"><h3 style="margin:0">تعديل عنوان ووصف الموقع</h3><p class="small" style="margin:0">يظهر في الأعلى لكل الطلاب.</p><div><label for="editHeaderTitle">العنوان الرئيسي</label><input id="editHeaderTitle" placeholder="مكتبة الدروس"></div><div><label for="editHeaderSubtitle">السطر الأول من الوصف</label><input id="editHeaderSubtitle" placeholder="دروس الوحدات المطلوبة : الفصل الثاني"></div><div><label for="editHomeworkUrl">رابط صفحة الواجبات</label><input id="editHomeworkUrl" type="url" placeholder="https://alazhari.netlify.app/"></div><div><label for="editHeaderDesc">السطر الثاني من الوصف</label><input id="editHeaderDesc" placeholder="الصف الأول الثانوي الأزهري - Year 2026-2027 | أ. محمد بركات"></div><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-success" onclick="saveHeaderSettings()">حفظ العنوان والوصف</button><button class="btn btn-outline" onclick="resetHeaderSettings()">إعادة تعيين</button></div><p id="headerMsg" class="small" aria-live="polite"></p></div>
+<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end"><div style="flex:1;min-width:200px"><label for="newUnitTitle">اسم الوحدة الجديدة</label><input id="newUnitTitle" placeholder="مثال: Unit 8"></div><button class="btn btn-success" onclick="addUnit()">إضافة وحدة</button></div>
+</div></section>
+<section class="section"><div class="card"><h2 style="margin:0">إضافة درس جديد</h2>
+<div><label for="lessonUnit">الوحدة</label><select id="lessonUnit"></select></div>
+<div><label for="lessonType">النوع</label><select id="lessonType"><option value="videos">فيديو - Videos</option><option value="photos">صور - Photos</option><option value="pdf">PDF</option><option value="quiz">اختبار - Quiz</option><option value="documents">مستند - Documents (Word)</option><option value="presentations">عرض - Presentations (PowerPoint)</option><option value="sheets">جدول - Sheets (Excel)</option><option value="audio">صوتي - Audio / Sound</option></select></div>
+<div><label for="lessonTitle">عنوان الدرس</label><input id="lessonTitle" placeholder="مثال: الدرس 1 - The Truth Trap"></div>
+<div><label for="lessonDesc">وصف قصير</label><input id="lessonDesc" placeholder="مثال: فيديو 12 دقيقة"></div>
+<div><label for="lessonLink">الرابط</label><input id="lessonLink" placeholder="https://..." type="url"></div>
+<button class="btn btn-primary" onclick="addLesson()">إضافة الدرس</button><p id="addMsg" aria-live="polite"></p>
+</div></section>
+<section class="section"><div class="card"><h2 style="margin:0">كل الدروس — <span id="teacherTitle"></span></h2><div id="teacherBoard" class="grid"></div></div></section>
+</div>
+</main>
+<script>
+const SUPABASE_URL="https://xsmipckvjzatmhyrzwko.supabase.co";
+const SUPABASE_KEY="sb_publishable_A-ghJVy-Buf6X0GpWJlUQw_g62qNXfy";
+
+const DEFAULT_HEADER={title:"مكتبة الدروس",subtitle:"دروس الوحدات المطلوبة : الفصل الثاني",desc:"الصف الأول الثانوي الأزهري - Year 2026-2027 | أ. محمد بركات",homeworkUrl:"https://alazhari.netlify.app/"};
+let headerSettings={...DEFAULT_HEADER};
+function applyHeaderSettings(){ const t=document.getElementById('headerTitle'); if(t) t.textContent=headerSettings.title; const s=document.getElementById('headerSubtitle'); if(s) s.textContent=headerSettings.subtitle; const d=document.getElementById('headerDesc'); if(d) d.textContent=headerSettings.desc; const e1=document.getElementById('editHeaderTitle'); if(e1) e1.value=headerSettings.title; const e2=document.getElementById('editHeaderSubtitle'); if(e2) e2.value=headerSettings.subtitle; const e3=document.getElementById('editHeaderDesc'); if(e3) e3.value=headerSettings.desc; const hw=document.getElementById('homeworkLink'); if(hw) hw.href=headerSettings.homeworkUrl||DEFAULT_HEADER.homeworkUrl; const eh=document.getElementById('editHomeworkUrl'); if(eh) eh.value=headerSettings.homeworkUrl||DEFAULT_HEADER.homeworkUrl; }
+function loadHeaderSettingsLocal(){ try{ const raw=localStorage.getItem('lessons_header_settings'); if(raw){ const j=JSON.parse(raw); headerSettings={...DEFAULT_HEADER,...j}; } }catch(e){} applyHeaderSettings(); }
+async function loadHeaderSettings(){ loadHeaderSettingsLocal(); try{ let r=await fetch(SUPABASE_URL+'/rest/v1/lesson_header_settings?select=*&limit=1',{headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY}}); if(r.ok){ let d=await r.json(); if(Array.isArray(d)&&d[0]){ headerSettings={title:d[0].title||DEFAULT_HEADER.title,subtitle:d[0].subtitle||DEFAULT_HEADER.subtitle,desc:d[0].description||DEFAULT_HEADER.desc,homeworkUrl:d[0].homework_url||DEFAULT_HEADER.homeworkUrl}; localStorage.setItem('lessons_header_settings',JSON.stringify(headerSettings)); applyHeaderSettings(); } } }catch(e){} }
+async function saveHeaderSettings(){ const title=document.getElementById('editHeaderTitle').value.trim()||DEFAULT_HEADER.title; const subtitle=document.getElementById('editHeaderSubtitle').value.trim(); const desc=document.getElementById('editHeaderDesc').value.trim(); const homeworkUrl=document.getElementById('editHomeworkUrl')?.value.trim()||DEFAULT_HEADER.homeworkUrl; headerSettings={title,subtitle,desc,homeworkUrl}; localStorage.setItem('lessons_header_settings',JSON.stringify(headerSettings)); applyHeaderSettings(); const msg=document.getElementById('headerMsg'); if(msg) msg.textContent='تم الحفظ على هذا الجهاز.'; try{ let r=await fetch(SUPABASE_URL+'/rest/v1/lesson_header_settings?select=*&limit=1',{headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY}}); if(r.ok){ let d=await r.json(); if(Array.isArray(d)&&d[0]){ await fetch(SUPABASE_URL+'/rest/v1/lesson_header_settings?id=eq.'+d[0].id,{method:'PATCH',headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY,'Content-Type':'application/json','Prefer':'return=representation'},body:JSON.stringify({title,subtitle,description:desc,homework_url:homeworkUrl})}); } else { await fetch(SUPABASE_URL+'/rest/v1/lesson_header_settings',{method:'POST',headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY,'Content-Type':'application/json','Prefer':'return=representation'},body:JSON.stringify({id:1,title,subtitle,description:desc,homework_url:homeworkUrl})}); } if(msg) msg.textContent='تم الحفظ للجميع.'; } }catch(e){} }
+async function resetHeaderSettings(){ headerSettings={...DEFAULT_HEADER}; localStorage.setItem('lessons_header_settings',JSON.stringify(headerSettings)); applyHeaderSettings(); const msg=document.getElementById('headerMsg'); if(msg) msg.textContent='تمت إعادة التعيين.'; }
+
+const DEFAULT_TEACHER_PASSWORD="18!@";
+function getTeacherPassword(){ return localStorage.getItem("lessons_teacher_pw") || DEFAULT_TEACHER_PASSWORD; }
+function svg(name){ const p={play:'<polygon points="6 3 20 12 6 21 6 3" fill="currentColor" stroke="none"/>',image:'<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/>',file:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>',quiz:'<path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>',doc:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>',chart:'<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>',table:'<rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/>',audio:'<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',book:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',search:'<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>',arrow:'<line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>',trash:'<polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>',edit:'<path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>' }; return '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'+(p[name]||p.book)+'</svg>'; }
+const TYPES={videos:{icon:"play",label:"فيديو",btn:"مشاهدة",accent:"#3a3122"},photos:{icon:"image",label:"صور",btn:"فتح",accent:"#5a4a2a"},pdf:{icon:"file",label:"PDF",btn:"فتح",accent:"#7c4a1e"},quiz:{icon:"quiz",label:"اختبار",btn:"ابدأ",accent:"#8a6d1a"},documents:{icon:"doc",label:"مستند",btn:"فتح",accent:"#3a3122"},presentations:{icon:"chart",label:"عرض",btn:"فتح",accent:"#7c4a1e"},sheets:{icon:"table",label:"جدول",btn:"فتح",accent:"#5a4a2a"},audio:{icon:"audio",label:"صوتي",btn:"استمع",accent:"#7c4a1e"}};
+const UNIT_COLORS={4:"#3a3122",5:"#5a4a2a",6:"#8a6d1a",7:"#7c4a1e"};
+let units=JSON.parse(localStorage.getItem('lessons_units')||'[{"id":4,"title":"Unit 4"},{"id":5,"title":"Unit 5"},{"id":6,"title":"Unit 6"},{"id":7,"title":"Unit 7"}]');
+let lessons=JSON.parse(localStorage.getItem('lessons_data')||'[]');
+let currentUnit='all', currentView='student', teacherAuthed=false, typeFilter='all';
+function saveUnits(){ localStorage.setItem('lessons_units',JSON.stringify(units)); }
+function saveLessonsLocal(){ localStorage.setItem('lessons_data',JSON.stringify(lessons)); }
+async function supaLessons(m,b,e){ let u=SUPABASE_URL+'/rest/v1/lessons'+(e||''); let r=await fetch(u,{method:m,headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY,'Content-Type':'application/json','Prefer':'return=representation'},body:b?JSON.stringify(b):undefined}); if(!r.ok) throw new Error('Supabase '+r.status); try{return await r.json();}catch(e){return [];} }
+async function supaUnits(m,b,e){ let u=SUPABASE_URL+'/rest/v1/lesson_units'+(e||''); let r=await fetch(u,{method:m,headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY,'Content-Type':'application/json','Prefer':'return=representation'},body:b?JSON.stringify(b):undefined}); if(!r.ok) throw new Error('Units '+r.status); try{return await r.json();}catch(e){return [];} }
+async function loadUnits(){ try{ let d=await supaUnits('GET','', '?select=*&order=id.asc&limit=100'); if(Array.isArray(d)&&d.length>0){ units=d.map(x=>({id:x.id,title:x.title})); saveUnits(); } else if(Array.isArray(d)&&d.length===0){ for(let u of units){ try{ await supaUnits('POST',{id:u.id,title:u.title}); }catch(e){} } } }catch(e){} }
+async function loadLessons(){ try{ let d=await supaLessons('GET','', '?select=*&order=created_at.desc&limit=500'); lessons=d.map(x=>({id:x.id,unit:x.unit,title:x.title,type:x.type,desc:x.description||'',link:x.link})); saveLessonsLocal(); }catch(e){ lessons=JSON.parse(localStorage.getItem('lessons_data')||'[]'); } renderAll(); }
+function isTeacherLink(){ try{ let s=(location.search||'')+' '+(location.hash||''); return s.toLowerCase().includes('teacher'); }catch(e){return false;} }
+function updateTeacherBtnVisibility(){ let b=document.getElementById('teacherBtn'); if(b) b.style.display=isTeacherLink()?'inline-flex':'none'; }
+function toggleHeader(){ let h=document.querySelector('.hero'); if(!h) return; if(h.style.display==='none'){ h.style.display=''; let b=document.getElementById('showHeaderBtn'); if(b) b.remove(); } else { h.style.display='none'; if(!document.getElementById('showHeaderBtn')){ let btn=document.createElement('button'); btn.id='showHeaderBtn'; btn.textContent='إظهار العناوين'; btn.className='btn btn-outline btn-small'; btn.style.cssText='position:fixed;top:8px;inset-inline-start:8px;z-index:999;background:#fff'; btn.onclick=()=>{ h.style.display=''; btn.remove(); }; document.body.appendChild(btn); } } }
+function goUnit(id){ currentUnit=parseInt(id); renderAll(); window.scrollTo(0,600); }
+function renderTabs(){ let bar=document.getElementById('tabsBar'); bar.innerHTML=''; let all=document.createElement('button'); all.className='tab'; all.setAttribute('aria-current', currentUnit==='all'?'true':'false'); all.textContent='الكل'; all.onclick=()=>{currentUnit='all'; renderAll();}; bar.appendChild(all); units.forEach(u=>{ let w=document.createElement('span'); w.className='unit-actions'; let b=document.createElement('button'); b.className='tab'; b.setAttribute('aria-current', u.id===currentUnit?'true':'false'); b.textContent=u.title; b.onclick=()=>{currentUnit=u.id; renderAll();}; w.appendChild(b); if(currentView==='teacher'&&teacherAuthed){ let eb=document.createElement('button'); eb.className='mini-btn'; eb.setAttribute('aria-label','تعديل '+u.title); eb.innerHTML=svg('edit'); eb.onclick=(e)=>{e.stopPropagation(); renameUnit(u.id);}; w.appendChild(eb); let db=document.createElement('button'); db.className='mini-btn'; db.setAttribute('aria-label','حذف '+u.title); db.innerHTML=svg('trash'); db.onclick=(e)=>{e.stopPropagation(); deleteUnit(u.id);}; w.appendChild(db); } bar.appendChild(w); }); let sel=document.getElementById('lessonUnit'); sel.innerHTML=''; units.forEach(u=>{let o=document.createElement('option'); o.value=u.id; o.textContent=u.title; sel.appendChild(o);}); if(currentUnit!=='all') sel.value=currentUnit; document.getElementById('boardTitle').textContent=currentUnit==='all'?'كل الوحدات':(units.find(u=>u.id===currentUnit)?.title||''); document.getElementById('teacherTitle').textContent=currentUnit==='all'?'كل الوحدات':(units.find(u=>u.id===currentUnit)?.title||''); let uc=document.getElementById('unitCards'); if(uc){ uc.innerHTML=units.map(u=>{ let count=lessons.filter(l=>l.unit===u.id).length; let color=UNIT_COLORS[u.id]||'#3a3122'; return '<button class="unit-card" style="border-top:6px solid '+color+'" onclick="goUnit('+u.id+')" aria-label="'+u.title+', '+count+' درس"><span style="display:flex;align-items:center;gap:10px">'+svg('book')+'<span><span style="display:block;font-weight:700;font-size:18px">'+u.title+'</span><span class="small">'+count+' درس - اضغط لعرض الدروس</span></span></span></button>'; }).join(''); } }
+function addUnit(){ let t=document.getElementById('newUnitTitle').value.trim(); if(!t){alert('اكتب اسم الوحدة');return;} (async()=>{ try{ let nid=Math.max(...units.map(x=>x.id),0)+1; let c=await supaUnits('POST',{id:nid,title:t}); if(c&&c[0]){ units.push({id:c[0].id,title:c[0].title}); currentUnit=c[0].id; } else { units.push({id:nid,title:t}); currentUnit=nid; } }catch(e){ let nid=Math.max(...units.map(x=>x.id),0)+1; units.push({id:nid,title:t}); currentUnit=nid; } saveUnits(); document.getElementById('newUnitTitle').value=''; renderAll(); alert('تمت إضافة '+t); })(); }
+function renameUnit(id){ let u=units.find(x=>x.id===id); let nt=prompt('الاسم الجديد:',u.title); if(nt!==null&&nt.trim()){ (async()=>{ try{ await supaUnits('PATCH',{title:nt.trim()}, '?id=eq.'+id); }catch(e){} u.title=nt.trim(); saveUnits(); renderAll(); })(); } }
+function deleteUnit(id){ if(!confirm('حذف هذه الوحدة؟')) return; (async()=>{ try{ await supaUnits('DELETE',null,'?id=eq.'+id); }catch(e){} units=units.filter(x=>x.id!==id); if(currentUnit===id) currentUnit='all'; saveUnits(); renderAll(); })(); }
+function changeTeacherPassword(){ let np=document.getElementById('newTeacherPw').value.trim(); if(!np||np.length<3){alert('قصيرة');return;} localStorage.setItem('lessons_teacher_pw',np); document.getElementById('pwMsg').textContent='تم التغيير على هذا الجهاز فقط.'; }
+function resetTeacherPassword(){ localStorage.removeItem('lessons_teacher_pw'); document.getElementById('pwMsg').textContent='تمت إعادة التعيين'; }
+function showView(v){ currentView=v; document.getElementById('studentView').style.display=v==='student'?'block':'none'; document.getElementById('teacherView').style.display=v==='teacher'?'block':'none'; renderAll(); }
+function askTeacher(){ let p=prompt('كلمة مرور المعلم'); if(p===getTeacherPassword()){teacherAuthed=true; showView('teacher');} else if(p!==null) alert('كلمة مرور خاطئة'); }
+async function addLesson(){ let unit=parseInt(document.getElementById('lessonUnit').value), type=document.getElementById('lessonType').value, title=document.getElementById('lessonTitle').value.trim(), desc=document.getElementById('lessonDesc').value.trim(), link=document.getElementById('lessonLink').value.trim(); let msg=document.getElementById('addMsg'); msg.innerHTML=''; if(!title||!link){alert('اكتب العنوان والرابط');return;} if(!link.startsWith('http')){alert('الرابط يجب أن يبدأ بـ https://');return;} try{ let c=await supaLessons('POST',{unit:unit,title:title,type:type,description:desc,link:link}); if(c&&c[0]) lessons.unshift({id:c[0].id,unit:c[0].unit,title:c[0].title,type:c[0].type,desc:c[0].description||'',link:c[0].link}); else lessons.unshift({id:Date.now(),unit:unit,title:title,type:type,desc:desc,link:link}); }catch(e){ lessons.unshift({id:Date.now(),unit:unit,title:title,type:type,desc:desc,link:link}); saveLessonsLocal(); } saveLessonsLocal(); document.getElementById('lessonTitle').value=''; document.getElementById('lessonDesc').value=''; document.getElementById('lessonLink').value=''; currentUnit=unit; renderAll(); msg.innerHTML='<span style="background:#e6f4e6;padding:12px;border-radius:12px;display:block">تمت إضافة الدرس</span>'; }
+async function delLesson(id){ if(!confirm('حذف؟')) return; try{ await supaLessons('DELETE',null,'?id=eq.'+id); }catch(e){} lessons=lessons.filter(x=>x.id!==id); saveLessonsLocal(); renderAll(); }
+function lessonHTML(l,isTeacher){ let t=TYPES[l.type]||TYPES.pdf; let un=units.find(u=>u.id===l.unit)?.title||('Unit '+l.unit); return '<article class="lesson" style="border-top:6px solid '+t.accent+'"><div class="lesson-top"><span style="display:flex;align-items:center;gap:10px">'+svg(t.icon)+'<span class="badge">'+t.label+'</span><span class="badge">'+un+'</span></span><h3>'+l.title+'</h3>'+(l.desc?'<p class="meta" style="margin:0">'+l.desc+'</p>':'')+'</div><div class="actions"><a class="btn btn-primary btn-small" href="'+l.link+'" target="_blank" rel="noopener">'+svg('arrow')+t.btn+'</a>'+(isTeacher?'<button class="btn btn-danger btn-small" onclick="delLesson('+l.id+')">'+svg('trash')+'حذف</button>':'')+'</div></article>'; }
+function renderAll(){ renderTabs(); let f=document.getElementById('typeFilters'); if(f){ let allT=[['all','الكل'],['videos','فيديو'],['photos','صور'],['pdf','PDF'],['quiz','اختبار'],['documents','مستند'],['presentations','عرض'],['sheets','جدول'],['audio','صوتي']]; f.innerHTML=allT.map(([k,label])=>'<button class="filter" aria-pressed="'+(typeFilter===k?'true':'false')+'" onclick="setTypeFilter(this.dataset.t)" data-t="'+k+'">'+svg(TYPES[k]?.icon||'book')+label+'</button>').join(''); } let list=lessons.slice(); if(currentUnit!=='all') list=list.filter(l=>l.unit===currentUnit); let q=(document.getElementById('searchBox')?.value||'').trim(); if(q) list=list.filter(l=>l.title.includes(q)||(l.desc||'').includes(q)); let cnt=list; if(typeFilter!=='all') list=list.filter(l=>l.type===typeFilter); let s=document.getElementById('typeSummary'); if(s) s.textContent=typeFilter==='all'?'عرض: كل الأنواع - '+cnt.length+' درس':'عرض: '+(TYPES[typeFilter]?.label||typeFilter)+' - '+list.length+' درس'; let sb=document.getElementById('studentBoard'); sb.innerHTML=list.length?list.map(l=>lessonHTML(l,false)).join(''):'<p class="small">لا توجد دروس بعد. المعلم سيضيفها قريبا.</p>'; let tb=document.getElementById('teacherBoard'); let tl=lessons.slice(); if(currentUnit!=='all') tl=tl.filter(l=>l.unit===currentUnit); tb.innerHTML=tl.length?tl.map(l=>lessonHTML(l,true)).join(''):'<p class="small">لا توجد دروس.</p>'; }
+function setTypeFilter(t){ typeFilter=t; renderAll(); }
+(async()=>{ loadHeaderSettings(); updateTeacherBtnVisibility(); await loadUnits(); await loadLessons(); })();
+</script></body></html>
